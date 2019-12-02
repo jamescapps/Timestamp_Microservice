@@ -39,7 +39,7 @@ app.get("/api/timestamp/:dateInput", (req, res) => {
     res.json({ unix: dateValue, utc: new Date(parseInt(dateValue)).toUTCString() })
     //If the input is not a number or a valid date.
   } else if (new Date(dateValue).toString() === "Invalid Date") {
-    res.json({"unix": null, "utc" : "Invalid Date" })
+    res.json({ error: "Invalid Date"})
     //If the input is a valid date.
   } else {
     res.json({ unix: new Date(dateValue).valueOf(), utc: new Date(dateValue).toUTCString() })
