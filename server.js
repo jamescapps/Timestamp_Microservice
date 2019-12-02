@@ -37,7 +37,7 @@ app.get("/api/timestamp/:dateInput", (req, res) => {
   if (!isNaN(dateValue)) {
     //Unix time is equal to the input and utc is equal to the formatted date version of the number.
     res.json({ unix: dateValue, utc: new Date(parseInt(dateValue)).toUTCString() })
-    //If the input is not a number or a valid date.
+    //If the input is not valid.
   } else if (new Date(dateValue).toString() === "Invalid Date") {
     res.json({ error: "Invalid Date"})
     //If the input is a valid date.
@@ -45,7 +45,6 @@ app.get("/api/timestamp/:dateInput", (req, res) => {
     res.json({ unix: new Date(dateValue).valueOf(), utc: new Date(dateValue).toUTCString() })
   }
 })
-
 
 
 // listen for requests :)
